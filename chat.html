@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questions and Answers | Welcome</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="chat.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+  <body>
+  
+  <div class="container">
+<!--     <div id="info">
+      <p id="info_start">Click on the microphone icon and begin speaking.</p>
+      <p id="info_speak_now">Speak now.</p>
+      <p id="info_no_speech">No speech was detected. You may need to adjust your<a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a>.</p>
+      <p id="info_no_microphone" style="display:none">No microphone was found. Ensure that a microphone is installed and that<a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">microphone settings</a> are configured correctly.</p>
+      <p id="info_allow">Click the "Allow" button above to enable your microphone.</p>
+      <p id="info_denied">Permission to use microphone was denied.</p>
+      <p id="info_blocked">Permission to use microphone is blocked. To change,go to chrome://settings/contentExceptions#media-stream</p>
+      <p id="info_upgrade">Web Speech API is not supported by this browser.Upgrade to <a href="//www.google.com/chrome">Chrome</a>version 25 or later.</p>
+    </div> -->
+
+    <div class="message-wrap col-lg-12">
+
+      <!-- Q&A box -->
+      <div class="msg-wrap">
+        <div class='alert alert-info msg-date'>
+            <strong>Personal Product Assistant</strong>
+        </div>
+      </div>
+
+      <!-- question input box -->
+      <div class="send-wrap">
+        <div class="left">
+          <span id="final_span" class="final"></span>
+          <span id="interim_span" class="interim"></span>
+        </div>
+        <div class="right">
+          <button id="start_button" onclick="startButton(event)">
+          <img id="start_img" src="./image/mic.gif" alt="Start"></button>
+        </div>
+        <textarea id="question" class="form-control send-message" rows="3" placeholder="Write a question..."></textarea>
+      </div>
+
+      <!-- send question button -->
+      <div class="btn-panel form-inline clearfix">
+        <!-- <a href="" class=" col-lg-4 text-right btn send-message-btn pull-right" role="button">Send Message</a> -->
+          <!-- <select id="select_language" class="form-control" onchange="updateCountry()"></select>
+          &nbsp;&nbsp;
+          <select id="select_dialect" class="form-control"></select> -->
+        <button id="chatBtn" class="col-lg-4 text-right btn btn-primary send-message-btn pull-right" role="button" onclick="getAnswer()">Send Question</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="chat.js"></script>
+  <script src="util.js"></script>
+  <script>
+    $(document).ready(function() {
+      // $('.msg-wrap').append("<div class='alert alert-info msg-date'> \
+      // $('.msg-wrap').append("<div class='msg-date'> \
+      //                         <strong>Today " + formatAMPM(new Date()) + "</strong> \
+      //                       </div>");
+      $('#question').keyup(function(event) {
+        if(event.keyCode == 13){
+          $('#chatBtn').click();
+        }
+      });
+      // $('#chatBtn').click(function() {
+      //   getAnswer();
+      // });
+    });
+  </script>
+
+  </body>
+</html>
