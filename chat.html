@@ -10,6 +10,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
+    <div id="loading">
+      <img id="loading-image" src="./image/qtt.jpg" alt="Loading..." />
+    </div>
   
   <div class="container">
 <!--     <div id="info">
@@ -62,6 +65,10 @@
   <script src="chat.js"></script>
   <script src="util.js"></script>
   <script>
+    $(window).load(function() {
+        $('#loading').delay( 800 ).fadeOut( 300 );
+    });
+
     $(document).ready(function() {
       // $('.msg-wrap').append("<div class='alert alert-info msg-date'> \
       // $('.msg-wrap').append("<div class='msg-date'> \

@@ -48,7 +48,7 @@
 
 .panel-body
 {
-    overflow: auto;
+    overflow-y: scroll;
     height: 250px;
 }
 

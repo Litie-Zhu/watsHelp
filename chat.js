@@ -8,22 +8,20 @@ function getAnswer() {
   $.getJSON("./watson.php", {query: q}, function() {})
   .done(function(data) {
     var answer = $("<div class='media msg'> \
-                        <a class='pull-left' href='#'> \
-                          <img style='width: 40px; height: 40px;' src='./image/IBM-research.jpg' class='img-circle'> \
-                        </a> \
-                        <div class='media-body'> \
+                        <div class='media-body clearfix'> \
                           <small class='pull-right time'><i class='fa fa-clock-o'></i> " + formatAMPM(new Date()) + "</small> \
                           <p class='media-heading'>" + q + "</p> \
+                          <img class='pull-left' src='./image/IBM-research.jpg' class='img-circle'> \
                         </div> \
                       </div>");
-    if(data[0] && data[0].text && data[0].title) {
-      answer.children("div").append("<p class='col-lg-11'><strong>Source</strong>: " + data[0].title + "</p><p class='col-lg-11'>" + data[0].text + " <i class='speaker fa fa-volume-up'></i></p>");
-    } else {
-      answer.children("div").append("<div class='col-lg-11'>Please provide a more specific question!<div>");
-    }
-    answer.children("div").children("p").children(".fa-volume-up").click(function() {speak(data[0].text)});
     $(".msg-wrap").append(answer);
     $('.msg-wrap').animate({scrollTop: $(document).height()}, 'fast');
+    if(data[0] && data[0].text && data[0].title) {
+      answer.children("div").append("<p class='col-lg-11'><strong>Source</strong>: " + data[0].title + "</p><p class='col-lg-11'>" + data[0].text + " <i class='speaker fa fa-volume-up'></i></p>");
+      answer.children("div").children("p").children(".fa-volume-up").click(function() {speak(data[0].text)});
+    } else {
+      answer.children("div").append("<p class='col-lg-11'>Please provide a more specific question!</p>");
+    }
   })
   .fail(function() {
     alert("Can not connect to Watson API right now");
